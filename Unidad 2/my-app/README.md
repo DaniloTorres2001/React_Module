@@ -1,4 +1,4 @@
-# 🧠 Candidate Board App
+# 📘 Candidate Board App Unidad 2
 
 Aplicación desarrollada en **React + TypeScript** que muestra una lista interactiva de candidatos con información detallada, estados laborales y habilidades técnicas. Permite copiar los datos al portapapeles con un solo clic.
 
@@ -35,12 +35,20 @@ my-app/
 
 Si deseas clonar únicamente esta carpeta sin descargar todo el repositorio, puedes hacerlo usando **sparse checkout**:
 
-```
+```bash
 git clone --filter=blob:none --sparse https://github.com/DaniloTorres2001/React_Module.git
 cd React_Module
 git sparse-checkout set "Unidad 2/my-app"
 cd "Unidad 2/my-app"
+npm install
+npm run dev
 ```
+
+## 📸 Vista Previa
+
+![preview](./demo-images/preview.png)
+
+
 ## 🧩 Funcionalidades
 
 Renderizado dinámico de una lista de candidatos.
@@ -52,10 +60,7 @@ Copia de datos del candidato al portapapeles.
 Responsive con diseño moderno y sombreado condicional.
 
 ## 📁 Ejemplo de Candidato
-```
-ts
-Copiar
-Editar
+```bash
 {
   name: 'Ana García',
   age: 35,
