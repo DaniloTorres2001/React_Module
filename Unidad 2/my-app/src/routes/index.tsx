@@ -24,7 +24,7 @@ function App() {
       age: 35,
       experience: 10,
       skills: ['Java', 'Spring Boot', 'Microservices'],
-      status: 'Interviewed',
+      status: 'Interviewing',
       working: true,
     },
     {
@@ -51,25 +51,38 @@ function App() {
       status: 'Pending',
       working: false,
     },
-  ];
+ ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4"> 
-      <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Lista de Candidatos</h1> 
-      <div className="flex flex-wrap justify-center gap-4">
-        {candidates.map((candidate, index) => (
-          <Candidate
-            key={index}
-            name={candidate.name}
-            age={candidate.age}
-            experience={candidate.experience}
-            skills={candidate.skills}
-            status={candidate.status}
-            working={candidate.working}
-            children={<p className="text-sm text-gray-600 mt-2">Este es un candidato destacado.</p>} 
-          />
-        ))}
-      </div>
+    <div className='flex flex-row flex-wrap gap-4 justify-center items-center'>
+      {candidates.map((candidate, index) => (
+        <Candidate
+          key={index}
+          name={candidate.name}
+          age={candidate.age}
+          experience={candidate.experience}
+          skills={candidate.skills}
+          status={candidate.status}
+          working={candidate.working}
+          onClick={() => alert(`Clicked on ${candidate.name}`)}
+        />
+      ))}
     </div>
+    // <div className="min-h-screen bg-gray-100 p-4"> 
+    //   <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Lista de Candidatos</h1> 
+    //   <div className="flex flex-wrap justify-center gap-4">
+    //     {candidates.map((candidate, index) => (
+    //       <Candidate
+    //         key={index}
+    //         name={candidate.name}
+    //         age={candidate.age}
+    //         experience={candidate.experience}
+    //         skills={candidate.skills}
+    //         status={candidate.status}
+    //         working={candidate.working}            
+    //       />
+    //     ))}
+    //   </div>
+    // </div>
   )
 }

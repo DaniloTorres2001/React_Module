@@ -13,7 +13,7 @@ export const candidateSchema = z.object({
         .number()
         .min(0, "La experiencia debe ser un número positivo"),
     status: z
-        .enum(["Pending", "Reviewing", "Interviewed", "Hired", "Refused"], {
+        .enum(["Pending", "Reviewing", "Interviewing", "Hired", "Refused"], {
             errorMap: () => ({ message: "Estado inválido" }),
         }),
         skills: z
