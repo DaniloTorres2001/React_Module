@@ -10,6 +10,26 @@ type CandidateProps = CandidateType & {
 const Candidate = (props: CandidateProps) => {
     const { name, age, experience, status, skills, working, onClick } = props;
 
+    // Función para copiar los datos del candidato al portapapeles
+    const handleCopyData = async () => {
+        const candidateData = `
+            Name: ${name || "Jon Doe"}
+            Age: ${age || 'N/A'} años
+            Experience: ${experience} años
+            Status: ${status.toUpperCase()}
+            Working: ${working ? "Yes ✅" : "No ❌"}
+            Habilidades: ${skills.join(', ')}
+        `.trim();
+        try {
+            await navigator.clipboard.writeText(candidateData);
+            alert(`¡Datos de ${name || "este candidato"} copiados exitosamente!`);
+        } catch (err) {
+            console.error('Error al copiar al portapapeles:', err);
+            alert('No se pudieron copiar los datos. Por favor, inténtalo de nuevo.');
+        }
+    };
+
+
     // Clases condicionales para el borde y la sombra
     // const borderColorClass = working ? "border-green-400" : "border-red-400";
     // const shadowColorClass = working ? "shadow-lg hover:shadow-xl transition-shadow duration-300" : "shadow-md hover:shadow-lg transition-shadow duration-300";
@@ -67,6 +87,17 @@ const Candidate = (props: CandidateProps) => {
                     </span>
                 ))}
             </ol>
+            {/* Botón para copiar datos */}
+            <button
+                onClick={(e) => {
+                    e.stopPropagation(); 
+                    handleCopyData();
+                }}
+                className="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200"
+            >
+                Copiar datos
+            </button>
+
             {/* <h2 className="text-2xl justify text-center font-extrabold text-gray-900 mb-3 border-b pb-2 border-gray-200">
                 {name?.toUpperCase() || "Jon Doe"}
             </h2>
@@ -93,9 +124,6 @@ const Candidate = (props: CandidateProps) => {
                     {working ? "Sí ✅" : "No ❌"}
                 </span>
             </p>
-            <p className="text-gray-700 text-sm italic border-t pt-2 border-gray-200">
-                Número aleatorio: <span className="font-medium text-gray-600">{randomNumber()}</span>
-            </p>
             {props.children && (
                 <div className="mt-3 pt-3 border-t border-gray-200">
                     {props.children}
@@ -105,16 +133,16 @@ const Candidate = (props: CandidateProps) => {
     )
     function getStatusColor(status: CandidateType['status']) {
         if (status === 'Hired') {
-            return 'bg-green-600';
+            return 'bg-green-600 hover:bg-green-700 ';
         }
         if (status === 'Interviewing') {
-            return 'bg-yellow-600 ';
+            return 'bg-yellow-600 hover:bg-yellow-700 ';
         }
         if (status === 'Reviewing') {
-            return 'bg-blue-600 ';
+            return 'bg-blue-600 hover:bg-blue-700 ';
         }
         if (status === 'Pending') {
-            return 'bg-gray-600 ';
+            return 'bg-gray-600 hover:bg-gray-700 ';
         }
         return 'bg-red-600 ';
     }

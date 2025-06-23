@@ -15,7 +15,7 @@ function App() {
       name: 'Danilo Torres',
       age: 21,
       experience: 5,
-      skills: ['JavaScript', 'React', 'Node.js', 'TypeScript'],
+      skills: ['JavaScript', 'React', 'TypeScript'],
       status: 'Hired',
       working: true,
     },
